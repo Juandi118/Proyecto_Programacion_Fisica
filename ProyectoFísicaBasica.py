@@ -3,7 +3,13 @@ import matplotlib.image as mpimg
 import numpy as np
 from math import sqrt
 
-"""Prueba de colores"""
+"""Esta clase permite graficar la posición de una estrella y unos planetas asociados a esta,
+   se calcula la distancia entre la estrella y los planetas con calcular_distancia y se calcula
+   la fuerza gravitacional ejercida por los planetas, por esto se define la masa de estos y 
+   de la estrella, si la estrella tiene menor masa que algunos de los planetas se imprime
+   un mensaje al usurio advirtiendo que los planetas no orbitan al rededor de esta y 
+   no se grafica el sistema planetario. Se asume una orbita circular con centro en la estrella
+   usando curvas paramétricas con numpy y graficadas con matplotlib.pyplot."""
 
 class SistemaPlanetario:
     def __init__(self):
@@ -20,6 +26,19 @@ class SistemaPlanetario:
     def ingresar_planeta(self):
         planeta_x = float(input("Ingrese la coordenada x del planeta (en km): "))
         planeta_y = float(input("Ingrese la coordenada y del planeta (en km): "))
+
+    # Verificar colisión con la estrella
+        if planeta_x == self.estrella_x and planeta_y == self.estrella_y:
+            print("Las coordenadas ingresadas coinciden con la ubicación de la estrella. El planeta colisiona con la estrella.")
+            return
+
+    # Verificar colisión con los planetas existentes
+        for planeta in self.planetas:
+            x, y, _ = planeta
+            if x == planeta_x and y == planeta_y:
+                print("Las coordenadas ingresadas ya existen. Los planetas colisionan.")
+                return
+
         masa = float(input("Ingrese la masa del planeta (en kg): "))
         self.planetas.append((planeta_x, planeta_y, masa))
 
@@ -57,20 +76,23 @@ class SistemaPlanetario:
         ax.set_facecolor('black')
 
         ax.scatter(self.estrella_x, self.estrella_y, c="yellow", label="Estrella")
-        ax.text(self.estrella_x, self.estrella_y, "Estrella", color="white", ha='center', va='bottom') #texto encima del punto
+        ax.text(self.estrella_x, self.estrella_y, "Star", color="white", ha='center', va='bottom') #texto encima del punto
 
         for i, planeta in enumerate(self.planetas):
             planeta_x, planeta_y, masa = planeta
 
-            ax.scatter(planeta_x, planeta_y, c="blue", label=f"Planeta {i+1}")
-            ax.plot([self.estrella_x, planeta_x], [self.estrella_y, planeta_y], linestyle='--', color='gray')
+            # Generar color aleatorio
+            color = np.random.rand(3)  # Genera tres valores de color RGB aleatorios
+
+            ax.scatter(planeta_x, planeta_y, color=[color], label=f"Planeta {i+1}")
+            ax.plot([self.estrella_x, planeta_x], [self.estrella_y, planeta_y], linestyle='--', color='gray', alpha=0.8)
 
             theta = np.linspace(0, 2 * np.pi, 100)
             distancia = self.calcular_distancia(self.estrella_x, self.estrella_y, planeta_x, planeta_y)
             orbita_x = self.estrella_x + distancia * np.cos(theta)
             orbita_y = self.estrella_y + distancia * np.sin(theta)
-            ax.plot(orbita_x, orbita_y, color='gray')
-            plt.text(planeta_x, planeta_y, f"Planeta {i+1}", ha='center', va='bottom', color="white")
+            ax.plot(orbita_x, orbita_y, color='gray', alpha=0.5)
+            plt.text(planeta_x, planeta_y, f"Planet {i+1}", ha='center', va='bottom', color="white")
 
         plt.xlabel("Coordenada x (km)")
         plt.ylabel("Coordenada y (km)")
@@ -100,3 +122,4 @@ sistema.imprimir_info_planetas()
 background_image = mpimg.imread("/content/espacio_2.jpg")  # Reemplaza "ruta_de_la_imagen.jpg" con la ruta de tu imagen
 
 sistema.graficar_sistema(background_image)
+
