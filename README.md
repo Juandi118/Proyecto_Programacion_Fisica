@@ -67,7 +67,7 @@ Para utilizar la clase `SistemaPlanetario`, se deben seguir los siguientes pasos
 
 1. Crear una instancia de la clase:
 
-```python
+python
 sistema = SistemaPlanetario()
 
 # Simulador de Fuerza Eléctrica entre Cargas
