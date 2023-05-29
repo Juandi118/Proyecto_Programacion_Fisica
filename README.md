@@ -1,4 +1,4 @@
-# Sistema Planetario
+# Simulador de Sistema Planetario
 
 Esta clase representa un sistema planetario y proporciona métodos para ingresar la información de la estrella y los planetas en el sistema, calcular distancias y fuerzas gravitacionales, imprimir información de los planetas y graficar el sistema en un plano.
 ## Clase `SistemaPlanetario`
@@ -41,6 +41,8 @@ Grafica el sistema planetario en un plano. Muestra la estrella, los planetas y l
 3. Luego, se te pedirá ingresar el número de plamteas y sus respectivas coordenadas ($Km$) y valores de masa en ($kg$).
 4. La información de los planetas, incluyendo la distancia y la fuerza gravitacional de la estrella, se imprimirá en la consola.
 5. Se abrirá una gráfica que muestra las orbitas de los plaetas (asumidas como circulares) y la estrella en un plano cartesiano.
+
+
 
 # Simulador de Fuerza Eléctrica entre Cargas
 
@@ -111,6 +113,99 @@ La función `main()` es la función principal que ejecuta el programa. Solicita 
 3. Luego, se te pedirá ingresar el número de cargas y sus respectivas coordenadas y valores en Coulombs.
 4. La información de las cargas, incluyendo la distancia y la fuerza eléctrica sobre la carga de prueba, se imprimirá en la consola.
 5. Se abrirá una gráfica que muestra la distribución de las cargas y la carga de prueba en un plano cartesiano.
+
+
+# Tiro Parabólico
+
+Este proyecto implementa un simulador de tiro parabólico utilizando la biblioteca `matplotlib` en Python. Permite calcular y visualizar la trayectoria de un proyectil lanzado con un ángulo y una velocidad inicial determinados.
+
+## Funciones y métodos
+
+### Clase `TiroParabolico`
+
+La clase `TiroParabolico` representa un tiro parabólico y contiene los siguientes métodos:
+
+#### `__init__(altura, velocidad_inicial, angulo)`
+
+Inicializa los atributos de la clase `TiroParabolico`.
+
+- Parámetros:
+  - `altura` (float): Altura inicial del proyectil.
+  - `velocidad_inicial` (float): Velocidad inicial del proyectil.
+  - `angulo` (float): Ángulo de lanzamiento del proyectil.
+
+#### `calcular_tiempo_vuelo()`
+
+Calcula el tiempo total de vuelo del proyectil.
+
+- Retorna:
+  - float: Tiempo total de vuelo del proyectil.
+
+#### `calcular_alcance_horizontal()`
+
+Calcula el alcance horizontal del proyectil.
+
+- Retorna:
+  - float: Alcance horizontal del proyectil.
+
+#### `calcular_altura_maxima()`
+
+Calcula la altura máxima alcanzada por el proyectil.
+
+- Retorna:
+  - float: Altura máxima alcanzada por el proyectil.
+
+#### `calcular_posicion(tiempo)`
+
+Calcula la posición (x, y) del proyectil en un tiempo dado.
+
+- Parámetros:
+  - `tiempo` (float): Tiempo en el que se desea conocer la posición.
+
+- Retorna:
+  - tuple: Posición (x, y) del proyectil en el tiempo dado.
+
+### Decorador `verificar_valores_numericos`
+
+El decorador `verificar_valores_numericos` verifica que los argumentos de una función sean valores numéricos.
+
+- Parámetros:
+  - `func` (function): Función a decorar.
+
+- Retorna:
+  - function: Función decorada.
+
+### Función `main(altura, velocidad_inicial, angulo)`
+
+La función principal `main` realiza los cálculos y muestra la animación del tiro parabólico.
+
+- Parámetros:
+  - `altura` (float): Altura inicial del proyectil.
+  - `velocidad_inicial` (float): Velocidad inicial del proyectil.
+  - `angulo` (float): Ángulo de lanzamiento del proyectil.
+
+- Retorna:
+  - str: Representación en formato de video HTML5 de la animación del tiro parabólico.
+
+### Loop de entrada de datos
+
+Se utiliza un loop de entrada de datos para asegurar que se ingresen valores numéricos válidos para la altura inicial, velocidad inicial y ángulo de lanzamiento del proyectil.
+
+## Uso
+
+Para utilizar el simulador de tiro parabólico, siga los siguientes pasos:
+
+1. Ingrese la altura inicial (en metros).
+2. Ingrese la velocidad inicial (en m/s).
+3. Ingrese el ángulo de lanzamiento (en grados).
+
+El programa calculará los resultados del tiro parabólico, imprimirá los valores y generará un video animado de la trayectoria del proyectil. El video se guardará en el archivo `trayectoria.mp4` y se mostrará en el navegador web.
+
+**Nota:** Asegúrese de tener instalada la biblioteca `matplotlib` y el códec de video `ffmpeg` para generar y guardar el video de la animación.
+
+¡Disfrute del simulador de tiro parabólico!
+
+
 
 ## Contribución
 
