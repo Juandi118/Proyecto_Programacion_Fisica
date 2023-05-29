@@ -27,6 +27,48 @@ descripción de lo que hace cada función en el código:
 
 Estas funciones definen el comportamiento del sistema planetario y permiten ingresar información, realizar cálculos y visualizar el sistema de manera gráfica.
 
+# Sistema Planetario
+
+Esta clase representa un sistema planetario y proporciona métodos para ingresar la información de la estrella y los planetas en el sistema, calcular distancias y fuerzas gravitacionales, imprimir información de los planetas y graficar el sistema en un plano.
+
+## Clase `SistemaPlanetario`
+
+### Método `__init__()`
+
+El constructor de la clase. Inicializa los atributos de la instancia `SistemaPlanetario`, incluyendo las coordenadas y masa de la estrella, así como un diccionario para almacenar los planetas.
+
+### Método `ingresar_estrella()`
+
+Permite ingresar la información de la estrella del sistema planetario. Solicita las coordenadas (x, y) de la estrella y su masa.
+
+### Método `ingresar_planeta(nombre)`
+
+Permite ingresar la información de un planeta en el sistema planetario. Solicita las coordenadas (x, y) del planeta y su masa. Verifica que las coordenadas no sean iguales a las de la estrella.
+
+### Método `calcular_distancia(x1, y1, x2, y2)`
+
+Calcula la distancia euclidiana entre dos puntos en un plano. Toma como parámetros las coordenadas (x, y) de dos puntos y devuelve la distancia entre ellos.
+
+### Método `calcular_fuerza_gravitacional(masa1, masa2, distancia)`
+
+Calcula la fuerza gravitacional entre dos cuerpos utilizando la ley de gravitación universal. Toma como parámetros las masas de los dos cuerpos y la distancia entre ellos, y devuelve la fuerza gravitacional.
+
+### Método `imprimir_info_planetas()`
+
+Imprime la información de los planetas en el sistema. Muestra las coordenadas, la distancia a la estrella y la fuerza gravitacional de cada planeta.
+
+### Método `graficar_sistema(background_image)`
+
+Grafica el sistema planetario en un plano. Muestra la estrella, los planetas y las órbitas de los planetas alrededor de la estrella. Toma como parámetro una imagen de fondo para el plano.
+
+## Uso
+
+Para utilizar la clase `SistemaPlanetario`, se deben seguir los siguientes pasos:
+
+1. Crear una instancia de la clase:
+
+```python
+sistema = SistemaPlanetario()
 
 # Simulador de Fuerza Eléctrica entre Cargas
 
